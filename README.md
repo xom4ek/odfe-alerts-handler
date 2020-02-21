@@ -59,7 +59,7 @@ Download latest version for your platform from [releases](https://github.com/bri
 
 ```yaml
 to: ['example@test.com']
-subject: ['Optional subject param']
+Subject: ['Optional subject param']
 ---
 This is the body of the message
 Here you can use the templeting as usual...
