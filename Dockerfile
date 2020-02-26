@@ -1,10 +1,11 @@
-FROM golang:1.12-alpine AS builder
+FROM golang:1.13-alpine AS builder
 
 WORKDIR /src/app
 
 COPY go.mod go.sum ./
-RUN apk add --no-cache git \
-    && go mod download
+RUN apk add --no-cache git
+RUN go mod download
+RUN sed -i 's/ServerName: c.serverName/ServerName: c.serverName,InsecureSkipVerify: true/' /usr/local/go/src/net/smtp/smtp.go 
 
 COPY . .
 RUN go install
